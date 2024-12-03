@@ -1,10 +1,11 @@
+use dojo_starter::models::{Direction, Position};
+
 // define the interface
 #[starknet::interface]
 trait IActions<T> {
     fn spawn(ref self: T);
     fn move(ref self: T, direction: Direction);
 }
-
 // dojo decorator
 #[dojo::contract]
 pub mod actions {

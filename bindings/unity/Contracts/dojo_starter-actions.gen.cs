@@ -19,6 +19,20 @@ public class Actions : MonoBehaviour
 {
     // The address of this contract
     public string contractAddress;
+    // Call the `dojo_init` system with the specified Account and calldata
+    // Returns the transaction hash. Use `WaitForTransaction` to wait for the transaction to be confirmed.
+    public async Task<FieldElement> dojo_init(Account account)
+    {
+        return await account.ExecuteRaw(new dojo.Call[] {
+                new dojo.Call{
+                    to = contractAddress,
+                    selector = "dojo_init",
+                    calldata = new dojo.FieldElement[] {
+
+                    }
+                }
+            });
+    }
 
 
     // Call the `spawn` system with the specified Account and calldata
